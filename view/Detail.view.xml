@@ -1,0 +1,37 @@
+<mvc:View controllerName="live3.view.Detail" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page class="sapUiFioriObjectPage" id="detailPage" navButtonPress="onNavBack" showNavButton="{device>/isPhone}" title="{i18n>detailTitle}">
+		<content>
+			<ObjectHeader number="{tweetCount}" numberUnit="" title="{user}">
+				<attributes>
+					<ObjectAttribute text="{influence}"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text=""/>
+				</firstStatus>
+			</ObjectHeader>
+			<IconTabBar id="idIconTabBar" select="onDetailSelect">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" key="Details">
+						<content>
+							<f:SimpleForm columnsL="1" columnsM="1" editable="false" emptySpanL="4" emptySpanM="4" id="detailForm" labelSpanL="3" labelSpanM="3"
+								layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+								<f:content>
+									<Label id="label1" text="user"/>
+									<Text id="text1" text="{user}"/>
+									<Label id="label2" text="influence"/>
+									<Text id="text2" text="{influence}"/>
+									<Label id="label3" text="stance"/>
+									<Text id="text3" text="{stance}"/>
+								</f:content>
+							</f:SimpleForm>
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

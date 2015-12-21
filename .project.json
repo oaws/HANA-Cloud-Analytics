@@ -1,0 +1,48 @@
+{
+  "dataBinding": {
+    "/view/Master.view.xml": {
+      "entitySet": "Clusters"
+    },
+    "/view/Master2.view.xml": {
+      "entitySet": "TweetersClustered"
+    },
+    "/view/Detail.view.xml": {
+      "entitySet": "TweetersClustered"
+    },
+    "/view/NotFound.view.xml": {
+      "entitySet": "UNBINDKEY"
+    },
+    "/view/App.view.xml": {
+      "entitySet": "UNBINDKEY"
+    },
+    "/view/Welcome.view.xml": {
+      "entitySet": "UNBINDKEY"
+    }
+  },
+  "generation": [
+    {
+      "templateId": "ui5template.fioriMasterMasterDetail",
+      "templateVersion": "1.4.0",
+      "dateTimeStamp": "Mon, 21 Dec 2015 06:49:06 GMT"
+    }
+  ],
+  "mockpreview": {
+    "mockUri": "/destinations/hanaxs/p1941109990trial/dev/live3/services.xsodata/",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "hcpdeploy": {
+    "account": "p1941109990trial",
+    "name": "live3",
+    "lastVersionWeTriedToDeploy": "1.0.0"
+  }
+}

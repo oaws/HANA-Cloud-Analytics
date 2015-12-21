@@ -1,0 +1,28 @@
+<mvc:View controllerName="live3.view.Master" displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page id="master1Page" title="{i18n>master1Title}">
+		<subHeader>
+			<Bar id="master1SearchBar">
+				<contentMiddle>
+					<SearchField id="master1SearchField" placeholder="{i18n>master1SearchPlaceholder}" search="onSearch" showRefreshButton="{device>/isNoTouch}"
+						tooltip="{i18n>master1SearchTooltip}" width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<List growing="true" growingScrollToLoad="true" id="master1List" items="{/Clusters}" mode="{device>/listMode}"
+				noDataText="{i18n>masterListNoDataText}" select="onSelect">
+				<items>
+					<ObjectListItem id="master1ListItem" press="onSelect" title="{users}" type="{device>/listItemType}">
+						<attributes>
+							<ObjectAttribute text="{influence}"/>
+							<ObjectAttribute text="{influence}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

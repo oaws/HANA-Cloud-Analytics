@@ -1,0 +1,10 @@
+<mvc:View controllerName="live3.view.NotFound" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page enableScrolling="false" title="{i18n>notFoundTitle}">
+		<content>
+			<Text class="spacerTop" text="{i18n>notFoundText}" textAlign="Center" width="100%"/>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

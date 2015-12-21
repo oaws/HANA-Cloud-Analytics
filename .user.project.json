@@ -1,0 +1,26 @@
+{
+  "run": [
+    {
+      "filePath": "/live3/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [
+        {
+          "source": "hanaxs",
+          "destinations": "hanaxs"
+        }
+      ],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6956418,
+        "displayName": "New Web Application"
+      }
+    }
+  ]
+}

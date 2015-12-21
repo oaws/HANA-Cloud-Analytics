@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema Namespace="p1941109990trial.dev.live3.services"
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="TweetsType">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="created" Type="Edm.DateTime" />
+                <Property Name="text" Type="Edm.String" MaxLength="256" />
+                <Property Name="lang" Type="Edm.String" MaxLength="256" />
+                <Property Name="user" Type="Edm.String" MaxLength="256" />
+                <Property Name="replyUser" Type="Edm.String" MaxLength="256" />
+                <Property Name="retweetedUser" Type="Edm.String" MaxLength="256" />
+                <Property Name="lat" Type="Edm.Double" />
+                <Property Name="lon" Type="Edm.Double" />
+            </EntityType>
+            <EntityType Name="TweetersType">
+                <Key>
+                    <PropertyRef Name="user" />
+                </Key>
+                <Property Name="user" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="stance" Type="Edm.Int32" />
+                <Property Name="influence" Type="Edm.Int32" />
+            </EntityType>
+            <EntityType Name="TweetersClusteredType">
+                <Key>
+                    <PropertyRef Name="user" />
+                </Key>
+                <Property Name="user" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="stance" Type="Edm.Int32" />
+                <Property Name="influence" Type="Edm.Int32" />
+                <Property Name="tweetCount" Type="Edm.Int64" Nullable="false" />
+                <Property Name="clusterNumber" Type="Edm.Int32" />
+                <NavigationProperty Name="Tweets" Relationship="p1941109990trial.dev.live3.services.Tweeters2TweetsType" FromRole="TweetersClusteredPrincipal" ToRole="TweetsDependent" />
+            </EntityType>
+            <EntityType Name="ClustersType">
+                <Key>
+                    <PropertyRef Name="clusterNumber" />
+                </Key>
+                <Property Name="clusterNumber" Type="Edm.Int32" Nullable="false" />
+                <Property Name="stance" Type="Edm.Int32" />
+                <Property Name="influence" Type="Edm.Int32" />
+                <Property Name="users" Type="Edm.Int64" Nullable="false" />
+                <NavigationProperty Name="Tweeters" Relationship="p1941109990trial.dev.live3.services.Clusters2TweetersType" FromRole="ClustersPrincipal" ToRole="TweetersClusteredDependent" />
+            </EntityType>
+            <Association Name="Clusters2TweetersType">
+                <End Type="p1941109990trial.dev.live3.services.ClustersType" Role="ClustersPrincipal" Multiplicity="1"/>
+                <End Type="p1941109990trial.dev.live3.services.TweetersClusteredType" Role="TweetersClusteredDependent" Multiplicity="*"/>
+                <ReferentialConstraint>
+                    <Principal Role="ClustersPrincipal">
+                        <PropertyRef Name="clusterNumber"/>
+                    </Principal>
+                    <Dependent Role="TweetersClusteredDependent">
+                        <PropertyRef Name="clusterNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Tweeters2TweetsType">
+                <End Type="p1941109990trial.dev.live3.services.TweetersClusteredType" Role="TweetersClusteredPrincipal" Multiplicity="1"/>
+                <End Type="p1941109990trial.dev.live3.services.TweetsType" Role="TweetsDependent" Multiplicity="*"/>
+                <ReferentialConstraint>
+                    <Principal Role="TweetersClusteredPrincipal">
+                        <PropertyRef Name="user"/>
+                    </Principal>
+                    <Dependent Role="TweetsDependent">
+                        <PropertyRef Name="user"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="services" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Tweets" EntityType="p1941109990trial.dev.live3.services.TweetsType" />
+                <EntitySet Name="Tweeters" EntityType="p1941109990trial.dev.live3.services.TweetersType" />
+                <EntitySet Name="TweetersClustered" EntityType="p1941109990trial.dev.live3.services.TweetersClusteredType" />
+                <EntitySet Name="Clusters" EntityType="p1941109990trial.dev.live3.services.ClustersType" />
+                <AssociationSet Name="Clusters2Tweeters" Association="p1941109990trial.dev.live3.services.Clusters2TweetersType">
+                    <End Role="ClustersPrincipal" EntitySet="Clusters"/>
+                    <End Role="TweetersClusteredDependent" EntitySet="TweetersClustered"/>
+                </AssociationSet>
+                <AssociationSet Name="Tweeters2Tweets" Association="p1941109990trial.dev.live3.services.Tweeters2TweetsType">
+                    <End Role="TweetersClusteredPrincipal" EntitySet="TweetersClustered"/>
+                    <End Role="TweetsDependent" EntitySet="Tweets"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

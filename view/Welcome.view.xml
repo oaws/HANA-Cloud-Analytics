@@ -1,0 +1,8 @@
+<mvc:View controllerName="live3.view.Welcome" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page enableScrolling="false">
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+		<content></content>
+	</Page>
+</mvc:View>
